@@ -155,7 +155,6 @@ void UART_ConvertUDec(unsigned long n){
 	if (strlen(String) == 1)
 	{
 		String[3] = String[0];
-		
 		for (i = 0 ;i<3 ;i++)
 		String[i]=' ';
 	}
@@ -206,23 +205,19 @@ void UART_OutUDec(unsigned long n){
 //10000 to "*.*** cm"  any value larger than 9999 converted to "*.*** cm"
 void UART_ConvertDistance(unsigned long n){
 // as part of Lab 11 implement this function
-  int i;
+ 	int i;
 	float fn = (float)n/1000;
 	sprintf (String, "%.3f",fn);	
-		String[5] = ' ';
-		String[6] = 'c';
-		String[7] = 'm';
 	if (n >9999)
-			{
-				for (i = 0 ;i<5 ;i++)
-				String[i]='*';
-				String[9]='\0';
-				String[1] = '.';
-						String[5] = ' ';
-						String[6] = 'c';
-						String[7] = 'm';
-			}
-	
+	{
+		for (i = 0 ;i<5 ;i++)
+		String[i]='*';
+		String[9]='\0';
+		String[1] = '.';
+	}
+	String[5] = ' ';
+	String[6] = 'c';
+	String[7] = 'm';	
 }
 
 //-----------------------UART_OutDistance-----------------------
