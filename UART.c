@@ -151,10 +151,11 @@ void UART_ConvertUDec(unsigned long n){
 	for (i=0;i<=10;i++)
 	String[i] = '\0';
 	sprintf(String, "%lu", n);
-
+	
 	if (strlen(String) == 1)
 	{
 		String[3] = String[0];
+		
 		for (i = 0 ;i<3 ;i++)
 		String[i]=' ';
 	}
@@ -176,9 +177,10 @@ void UART_ConvertUDec(unsigned long n){
 	{
 		for (i = 0 ;i<4 ;i++)
 		String[i]='*';
-		for (i = 4 ;i<10 ;i++)
+		for (i = 5 ;i<10 ;i++)
 		String[i]='\0';
 	}
+	String[4] = ' ';
 }
 
 //-----------------------UART_OutUDec-----------------------
@@ -210,12 +212,15 @@ void UART_ConvertDistance(unsigned long n){
 		String[5] = ' ';
 		String[6] = 'c';
 		String[7] = 'm';
-	if (n>=9999)
+	if (n >9999)
 			{
-				for (i = 0 ;i<4 ;i++)
+				for (i = 0 ;i<5 ;i++)
 				String[i]='*';
-				for (i = 4 ;i<10 ;i++)
-				String[i]='\0';
+				String[9]='\0';
+				String[1] = '.';
+						String[5] = ' ';
+						String[6] = 'c';
+						String[7] = 'm';
 			}
 	
 }
